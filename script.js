@@ -5,7 +5,7 @@ const ctx = canvas.getContext('2d');
 const W = canvas.width;
 const H = canvas.height;
 
-// Paddle
+// yPaddle
 const PADDLE_W = 12;
 const PADDLE_H = 90;
 const PADDLE_SPEED = 6;
@@ -36,7 +36,7 @@ canvas.addEventListener('mousemove', (e)=>{
   leftY = Math.max(0, Math.min(H - PADDLE_H, y - PADDLE_H/2));
 });
 
-// Keyboard
+// Keyboardy
 window.addEventListener('keydown', (e)=>{
   if (e.key === 'ArrowUp') moveUp = true;
   if (e.key === 'ArrowDown') moveDown = true;
@@ -45,6 +45,7 @@ window.addEventListener('keydown', (e)=>{
     if (!running) startRound();
   }
 });
+
 window.addEventListener('keyup', (e)=>{
   if (e.key === 'ArrowUp') moveUp = false;
   if (e.key === 'ArrowDown') moveDown = false;
@@ -234,4 +235,5 @@ function loop(){
 draw();
 
 // expose reset for debugging in console (optional)
-window.__pong = { resetBall, startRound: startRound, getScores: ()=>({left:leftScore,right:rightScore}) };
+window.__pong = { resetBall, 
+  startRound: startRound, getScores: ()=>({left:leftScore,right:rightScore}) };
